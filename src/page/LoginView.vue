@@ -44,7 +44,7 @@
                   Login
                 </button>
                 <p class="text-center">
-                  Don't have account?
+                  Don't have an account?
                   <router-link to="/register">Register here </router-link>
                 </p>
               </div>
@@ -78,7 +78,7 @@ export default {
       localStorage.getItem("token") != "" &&
       localStorage.getItem("token") != null
     ) {
-      this.$router.push("/dashboard");
+      this.$router.push("/home");
     }
   },
   methods: {
@@ -92,7 +92,7 @@ export default {
         .post("/api/login", payload)
         .then((response) => {
           localStorage.setItem("token", response.data.token);
-          this.$router.push("/dashboard");
+          this.$router.push("/home");
           return response;
         })
         .catch((error) => {
@@ -105,6 +105,13 @@ export default {
           }
           return error;
         });
+    },
+  },
+  computed: {
+    // Use a computed property to determine whether to show the sidebar and header
+    showSidebarAndHeader() {
+      // Check the current route and return true if the route is not the login page
+      return this.$route.path !== "/";
     },
   },
 };

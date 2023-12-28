@@ -87,7 +87,7 @@
 
 <script>
 import axios from "axios";
-import LayoutDiv from "../components/layoutdiv.vue";
+import LayoutDiv from "../components/LayoutDiv.vue";
 
 export default {
   name: "RegisterPage",
@@ -125,7 +125,7 @@ export default {
         .post("/api/register", payload)
         .then((response) => {
           localStorage.setItem("token", response.data.token);
-          this.$router.push("/home");
+          this.$router.push("/login");
           return response;
         })
         .catch((error) => {
@@ -135,6 +135,13 @@ export default {
           }
           return error;
         });
+    },
+  },
+  computed: {
+    // Use a computed property to determine whether to show the sidebar and header
+    showSidebarAndHeader() {
+      // Check the current route and return true if the route is not the login page
+      return this.$route.path !== "/register";
     },
   },
 };

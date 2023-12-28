@@ -328,67 +328,67 @@
 </template>
 
 <script scoped>
-import axios from "axios";
-import LayoutDiv from "../components/LayoutDiv.vue";
+// import axios from "axios";
+// import LayoutDiv from "../components/LayoutDiv.vue";
 
-export default {
-  name: "DashboardPage",
-  components: {
-    LayoutDiv,
-  },
-  data() {
-    return {
-      user: {},
-    };
-  },
-  created() {
-    this.getUser();
-    if (
-      localStorage.getItem("token") == "" ||
-      localStorage.getItem("token") == null
-    ) {
-      this.$router.push("/");
-    } else {
-      this.getUser();
-    }
-  },
-  methods: {
-    getUser() {
-      axios
-        .get("/api/user", {
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
-        })
-        .then((r) => {
-          this.user = r.data;
-          return r;
-        })
-        .catch((e) => {
-          return e;
-        });
-    },
+// export default {
+//   name: "DashboardPage",
+//   components: {
+//     LayoutDiv,
+//   },
+//   data() {
+//     return {
+//       user: {},
+//     };
+//   },
+//   created() {
+//     this.getUser();
+//     if (
+//       localStorage.getItem("token") == "" ||
+//       localStorage.getItem("token") == null
+//     ) {
+//       this.$router.push("/");
+//     } else {
+//       this.getUser();
+//     }
+//   },
+//   methods: {
+//     getUser() {
+//       axios
+//         .get("/api/user", {
+//           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+//         })
+//         .then((r) => {
+//           this.user = r.data;
+//           return r;
+//         })
+//         .catch((e) => {
+//           return e;
+//         });
+//     },
 
-    logoutAction() {
-      axios
-        .post(
-          "/api/logout",
-          {},
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          }
-        )
-        .then((r) => {
-          localStorage.setItem("token", "");
-          this.$router.push("/");
-          return r;
-        })
-        .catch((e) => {
-          return e;
-        });
-    },
-  },
-};
+//     logoutAction() {
+//       axios
+//         .post(
+//           "/api/logout",
+//           {},
+//           {
+//             headers: {
+//               Authorization: "Bearer " + localStorage.getItem("token"),
+//             },
+//           }
+//         )
+//         .then((r) => {
+//           localStorage.setItem("token", "");
+//           this.$router.push("/");
+//           return r;
+//         })
+//         .catch((e) => {
+//           return e;
+//         });
+//     },
+//   },
+// };
 </script>
 
 <style scoped>

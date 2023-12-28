@@ -1,10 +1,10 @@
 <template>
   <div class="app">
     <!-- Sidebar -->
-    <Sidebar />
+    <Sidebar v-if="showSidebarAndHeader" />
     <!-- Header -->
     <main>
-      <Header />
+      <Header v-if="showSidebarAndHeader" />
       <!-- Content -->
       <router-view />
     </main>
@@ -14,11 +14,20 @@
 <script>
 import Header from "./components/Header.vue";
 import Sidebar from "./components/Sidebar.vue";
+
 export default {
   name: "App",
   components: {
     Header,
     Sidebar,
+  },
+  computed: {
+    showSidebarAndHeader() {
+      const exemptedPages = ["/", "/register"];
+      const isExemptedPage = exemptedPages.includes(this.$route.path);
+
+      return !isExemptedPage;
+    },
   },
 };
 </script>

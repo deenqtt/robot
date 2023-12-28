@@ -41,7 +41,7 @@
           </div>
           <div class="nav4">
             <li class="nav-item">
-              <router-link class="nav-link me-2" to="/sign-in">
+              <router-link class="nav-link me-2" to="/">
                 <i class="fas fa-key opacity-6 me-1" aria-hidden="true"></i>
                 Sign In
               </router-link>
