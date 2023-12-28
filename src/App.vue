@@ -1,30 +1,44 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app">
+    <!-- Sidebar -->
+    <Sidebar />
+    <!-- Header -->
+    <main>
+      <Header />
+      <!-- Content -->
+      <router-view />
+    </main>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script>
+import Header from "./components/Header.vue";
+import Sidebar from "./components/Sidebar.vue";
+export default {
+  name: "App",
+  components: {
+    Header,
+    Sidebar,
+  },
+};
+</script>
+
+<style lang="scss">
+:root {
+  --primary: #1b4ae7;
+  --primary-alt: #5b87e3;
+  --grey: #64748b;
+  --dark: #1e293b;
+  --dark-alt: #334155;
+  --light: #e1d7d7;
+  --sidebar-width: 400px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.app {
+  display: flex;
+  main {
+    flex: 1 1 0;
+    padding: 2rem;
+  }
 }
 </style>
